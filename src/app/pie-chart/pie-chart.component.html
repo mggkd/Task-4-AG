@@ -1,0 +1,28 @@
+<div class="container mt-4">
+    <form [formGroup]="pieChartForm" class="row g-3" (ngSubmit)="onSubmit()">
+      <div class="col-md-4">
+        <label for="textbox1" class="form-label">Textbox 1:</label>
+        <input type="number" id="textbox1" formControlName="textbox1" class="form-control" (blur)="calculateValues()">
+        <div *ngIf="textbox1Invalid" class="text-danger">Please enter a valid value for Textbox 1.</div>
+      </div>
+  
+      <div class="col-md-4">
+        <label for="textbox2" class="form-label">Textbox 2:</label>
+        <input type="number" id="textbox2" formControlName="textbox2" class="form-control" (blur)="calculateValues()">
+        <div *ngIf="textbox2Invalid" class="text-danger">Please enter a valid value for Textbox 2.</div>
+      </div>
+  
+      <div *ngIf="validationMessage" class="col-12 text-danger">{{ validationMessage }}</div>
+  
+      <div class="col-12 mt-2">
+        <button type="button" class="btn btn-warning btn-lg" (click)="createChart()">Create Pie Chart</button>
+      </div>
+    </form>
+  
+    <hr>
+  
+    <div class="text-center">
+      <canvas id="chartCanvas" width="400" height="400"></canvas>
+    </div>
+  </div>
+  
